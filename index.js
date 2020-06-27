@@ -1,18 +1,17 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const fileName = "README.md"
 
-async function gatherInformation() {
-    var response = await inquirer.prompt(
+const questions = [
     {
         type: "input",
-        message: "What is your username?",
-        name: "username"
+        message: "What is your full name?",
+        name: "fullname"
     },
-        {
-        type: "list",
-        message: "What file type would you like to create?",
-        name: "filename",
-        choices: ["README.md", "index.html"]
+    {
+        type: "input",
+        message: "What is your GitHub username?",
+        name: "username"
     },
     {
         type: "input",
@@ -21,67 +20,61 @@ async function gatherInformation() {
     },
     {
         type: "input",
-        message: "How would you describe this project?",
+        message: "Please provide a description for this project:",
         name: "description"
     },
     {
         type: "checkbox",
         message: "What content would you like to include?",
         name: "content",
-        choices: ["Installation", "Usage", "License", "Contributing", "Tests", "Questions"]
+        choices: ["Installation", "Usage", "License", "Contributers", "Tests", "Questions"]
     },
     {
         type: "input",
         message: "What application(s) is/are required?",
-        name: "Installation"
+        name: "Installation",
+        when: data => data.content.includes("Installation")
     },
     {
         type: "input",
         message: "How is this application used?",
-        name: "Usage"
+        name: "Usage",
+        when: data => data.content.includes("Usage")
     },
     {
         type: "list",
         message: "Choose a license:",
         name: "License",
-        choice: ["MIT License", "GNU GPLv3", "No License"]
+        choice: ["MIT License", "GNU GPLv3", "No License"],
+        when: data => data.content.includes("License")
     },
     {
         type: "input",
         message: "Who are the additional contributing members?",
-        name: "Contributing"
+        name: "Contributers",
+        when: data => data.content.includes("Contributers")
     },
     {
         type: "input",
         message: "How will this application be used?",
-        name: "Tests"
+        name: "Tests",
+        when: data => data.content.includes("Tests")
     },
     {
         type: "input",
         message: "How can you be contacted for inquiries?",
-        name: "Questions"
+        name: "Questions",
+        when: data => data.content.includes("Questions")
     }
-)};
-
-var username = response.username;
-var filename = response.filename;
-var title = response.title;
-var description = response.description;
-var content = response.content;
-var Installation = response.Installation;
-var Usage = response.Usage;
-var License = response.License;
-var Contributing = response.Contributing;
-var Tests = response.Tests;
-var Questions = response.Questions;
+];
 
 function writeComplete( err, data ){
     if( err ){
-        console.log( `Sorry, something went wrong!` )
+        console.log( `Oops, something went wrong!` )
         return;
     }
 
-    console.log( `Finished Writing file.` )
+    console.log( `Finished writing file.` )
 }
 
 fs.writeFile("README.md", , "utf8", writeComplete)
@@ -89,6 +82,7 @@ fs.writeFile("README.md", , "utf8", writeComplete)
 var title = "";
 var year = "";
 var fullname = "";
+
 var MITLicense = 
 `MIT License
 
