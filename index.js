@@ -16,6 +16,11 @@ const questions = [
     },
     {
         type: "input",
+        message: "What is your preferred email address?",
+        name: "email"
+    },
+    {
+        type: "input",
         message: "What is the title of your project?",
         name: "title"
     },
@@ -69,34 +74,37 @@ const questions = [
     }
 ];
 
-function completeFile(filename, data) {
-    fs.writeFile(filename, data, function(err) {
+function completeFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err) {
         if (err) {
             return console.log(`Oops, something went wrong!`);
         }
-        console.log(`Success! ${filename} file was created.`);
+        console.log(`Success! ${fileName} file was created.`);
     })
 };
 
-async function init() {
+async function generateREADME () {
     const retrievePromptInfo = await inquirer.prompt(questions);
-    const fetchGitHubURL = await axios.get(`https://api.github.com/users/${retrievePromptInfo.user}`)
-
-    var TableOfContentsItems = questions.tableOfContents.split(', ');
+    const fetchGitHubURL = await axios.get(`https://api.github.com/users/${retrievePromptInfo.username}`);
     
+    let profilePicture = fetchGitHubURL.avatar_url;
+    let TableOfContentsItems = questions.content.split(', ');
     let TableOfContents = "";
-    for (var i = 0; i < content.length; i++){
-        TableOfContents += `- [${content[i].charAt(0).toUpperCase() + content[i].slice(1)}](#${content[i]}) \n`
+    for (var i = 0; i < content.length; i++) {
+        TableOfContents += `- [${TableOfContentsItems[i].charAt(0).toUpperCase() + TableOfContentsItems[i].slice(1)}](#${TableOfContentsItems[i]}) \n`;
     }
 }
 
-var title = data.title;
-var fullname = data.fullname;
+
+generateREADME();
+
+var title = questions.title;
+var fullname = questions.fullname;
 
 var MITLicense = 
 `MIT License
 
-Copyright (c) ${year} ${fullname}
+Copyright (c) ${(new Date()).getFullYear()} ${fullname}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
