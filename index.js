@@ -16,11 +16,6 @@ const questions = [
     },
     {
         type: "input",
-        message: "What is your preferred email address?",
-        name: "email"
-    },
-    {
-        type: "input",
         message: "What is the title of your project?",
         name: "title"
     },
@@ -51,7 +46,7 @@ const questions = [
         type: "list",
         message: "Choose a license:",
         name: "License",
-        choice: ["MIT License", "GNU GPLv3", "No License"],
+        choice: ["MIT License", "GNU GPLvl3", "No License"],
         when: data => data.content.includes("License")
     },
     {
@@ -83,11 +78,20 @@ function completeFile(fileName, data) {
     })
 };
 
+var license = "";
+if (questions.License == "MIT License") {
+    license = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) + ${MITLicense}`;
+} else if (questions.License == "GNU GPLvl3") {
+    license = `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) + ${GNULicense}`;
+} else {
+    license = "";
+}
+
 async function generateREADME () {
     const retrievePromptInfo = await inquirer.prompt(questions);
     const fetchGitHubURL = await axios.get(`https://api.github.com/users/${retrievePromptInfo.username}`);
     
-    let profilePicture = fetchGitHubURL.avatar_url;
+    let profilePicture = fetchGitHubURL.data.avatar_url;
     let TableOfContentsItems = questions.content.split(', ');
     let TableOfContents = "";
     for (var i = 0; i < content.length; i++) {
@@ -95,6 +99,17 @@ async function generateREADME () {
     }
 }
 
+        `# ${questions.title}`+ '\n' +
+        '### Description' + '\n' + questions.description + '\n' + '\n' +
+        '### Table of Contents' + '\n' + TableofContents + '\n' + 
+        '### Installation' + '\n' + '- ' + questions.Installation.split(', ').join('\n'+'- ') + '\n' + '\n' +
+        '### Usage' + '\n' + '```'+ '\n' + questions.Usage + '\n' + '```' + '\n' + '\n' +
+        '### License' + '\n' + licenseBadge + '\n' + License + '\n' + 
+        `### Contributing` + '\n' + questions.Contributers + '\n' + '\n' +
+        `### Tests` + '\n' + questions.Tests + '\n' + '\n' +
+        `### Questions` + '\n' + `| Please direct your inquiries here! |` + '\n' + `| :---: |` + '\n' +
+        `| ![alt text](${questions.profilePicture} "Github Profile Picture") |` + '\n' +
+        `| <a href=" ${questions.Questions} "target="_blank">Me!</a> |` + '\n'
 
 generateREADME();
 
