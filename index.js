@@ -68,16 +68,15 @@ const questions = [
     }
 ];
 
-function writeComplete( err, data ){
-    if( err ){
-        console.log( `Oops, something went wrong!` )
-        return;
-    }
+function completeFile(filename, data) {
+    fs.writeFile(filename, data, function(err) {
+        if (err) {
+            return console.log(`Oops, something went wrong!`);
+        }
+        console.log(`Success! ${filename} file was created.`);
+    })
+};
 
-    console.log( `Finished writing file.` )
-}
-
-fs.writeFile("README.md", , "utf8", writeComplete)
 
 var title = "";
 var year = "";
