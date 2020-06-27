@@ -78,10 +78,13 @@ function completeFile(filename, data) {
     })
 };
 
+async function init() {
+    const retrievePromptInfo = await inquirer.prompt(questions);
+    const fetchGitHubURL = await axios.get(`https://api.github.com/users/${retrievePromptInfo.user}`)
+}
 
-var title = "";
-var year = "";
-var fullname = "";
+var title = data.title;
+var fullname = data.fullname;
 
 var MITLicense = 
 `MIT License
@@ -104,7 +107,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.`
+SOFTWARE.`; 
 
 var GNULicense = `                    
 GNU GENERAL PUBLIC LICENSE
@@ -780,4 +783,4 @@ into proprietary programs.  If your program is a subroutine library, you
 may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
-<https://www.gnu.org/licenses/why-not-lgpl.html>.`
+<https://www.gnu.org/licenses/why-not-lgpl.html>.`;
