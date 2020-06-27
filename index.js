@@ -81,6 +81,13 @@ function completeFile(filename, data) {
 async function init() {
     const retrievePromptInfo = await inquirer.prompt(questions);
     const fetchGitHubURL = await axios.get(`https://api.github.com/users/${retrievePromptInfo.user}`)
+
+    var TableOfContentsItems = questions.tableOfContents.split(', ');
+    
+    let TableOfContents = "";
+    for (var i = 0; i < content.length; i++){
+        TableOfContents += `- [${content[i].charAt(0).toUpperCase() + content[i].slice(1)}](#${content[i]}) \n`
+    }
 }
 
 var title = data.title;
