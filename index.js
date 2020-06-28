@@ -101,7 +101,7 @@ async function generateREADME () {
     var writtenContent =
     `# ${promptInfoResult.title}` + '\n' +
     '### Description' + '\n' + promptInfoResult.description + '\n' + '\n' +
-    '### Table of Contents' + '\n' + `${TableOfContents}` + '\n'
+    '### Table of Contents' + '\n' + `${TableOfContents}` + '\n' +
     '### Installation' + '\n' + '- ' + promptInfoResult.Installation.split(', ').join('\n'+'- ') + '\n' + '\n' +
     '### Usage' + '\n' + '```' + '\n' + promptInfoResult.Usage + '\n' + '```' + '\n' + '\n' +
     '### License' + '\n' + `${license}` + '\n' +
