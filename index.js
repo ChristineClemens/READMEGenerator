@@ -99,14 +99,14 @@ async function generateREADME () {
     var license = generateLicense(promptInfoResult);
 
     var writtenContent =
-    `# ${promptInfoResult.title}` +
-    '### Description' + '\n' + promptInfoResult.description +
-    '### Table of Contents' + '\n' + `${TableOfContents}` +
-    '### Installation' + '\n' + '- ' + promptInfoResult.Installation.split(', ').join('\n'+'- ') +
-    '### Usage' + '\n' + promptInfoResult.Usage +
-    '### License' + '\n' + `${license}` +
-    `### Contributors` + '\n' + promptInfoResult.Contributors +
-    `### Tests` + '\n' + promptInfoResult.Tests +
+    `# ${promptInfoResult.title}` + '\n' +
+    '### Description' + '\n' + promptInfoResult.description + '\n' + '\n' +
+    '### Table of Contents' + '\n' + `${TableOfContents}` + '\n'
+    '### Installation' + '\n' + '- ' + promptInfoResult.Installation.split(', ').join('\n'+'- ') + '\n' + '\n' +
+    '### Usage' + '\n' + '```' + '\n' + promptInfoResult.Usage + '\n' + '```' + '\n' + '\n' +
+    '### License' + '\n' + `${license}` + '\n' +
+    `### Contributors` + '\n' + promptInfoResult.Contributors + '\n' + '\n' +
+    `### Tests` + '\n' + promptInfoResult.Tests + '\n' + '\n' +
     `### Questions` + '\n' + `| Please direct your inquiries here! |` + '\n' + `| :---: |` + '\n' +
     `| ![alt text](${profilePicture} "Github Profile Picture") |` + '\n' +
     `| <a href= "${promptInfoResult.Questions}" target="_blank">Contact Me</a> |` + '\n' +
