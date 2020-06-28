@@ -17,9 +17,7 @@ This application was designed with the intention of creating a shorthand in whic
 - inquirer (npm install inquirer)
 
 ### Usage
-```
 In order to use this application effectively, simply download the index.js file included in this repository. Be sure to have the node.js server environment installed as well as the axios, fs, and inquirer modules that can be downloaded by entering “npm install <module>” in the command line. Following this setup, initialize the JavaScript file by entering “node index.js” in the command line. You will be prompted to answer a series of questions, following which a README.md file will be generated!
-```
 
 ### License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)MIT License
