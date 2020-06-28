@@ -1,6 +1,8 @@
 # Command Line README Generator
 ### Description
-This application was designed with the intention of creating a shorthand in which the average user is able to generate a README.md file based upon their own specifications within the command line. In running this application in the command line, users will be prompted to select and define the information that they wish to include. Upon completion, a completed README.md file will be generated using this information. 
+This application was designed with the intention of creating a shorthand in which the average user is able to generate a README.md file based upon their own specifications within the command line. In running this application in the command line, users will be prompted to select and define the information that they wish to include. Upon completion, a completed README.md file will be generated using this information.    
+
+![alt text] (https://github.com/ChristineClemens/READMEGenerator/blob/master/Assets/README%20Generator%20Screenshot.PNG)
 
 ### Table of Contents
 - [Installation](#Installation) 
@@ -17,7 +19,7 @@ This application was designed with the intention of creating a shorthand in whic
 - inquirer (npm install inquirer)
 
 ### Usage
-In order to use this application effectively, simply download the index.js file included in this repository. Be sure to have the node.js server environment installed as well as the axios, fs, and inquirer modules that can be downloaded by entering “npm install <module>” in the command line. Following this setup, initialize the JavaScript file by entering “node index.js” in the command line. You will be prompted to answer a series of questions, following which a README.md file will be generated!
+In order to use this application effectively, simply download the index.js file included in this repository. Be sure to have the node.js server environment installed as well as the axios, fs, and inquirer modules that can be downloaded by entering “npm install <module>” in the command line. Following this setup, initialize the JavaScript file by entering “node index.js” in the command line. You will be prompted to answer a series of questions, following which a README.md file will be generated. This README.md file is was generated using the README Generator application!
 
 ### License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)MIT License
@@ -52,4 +54,6 @@ This application will receive and store the selected user input information as a
 | :---: |
 | ![alt text](https://avatars2.githubusercontent.com/u/64107231?v=4 "Github Profile Picture") |
 | <a href= "christineclemens.tesol@gmail.com" target="_blank">Contact Me</a> |
-**This project was created by Christine Clemens.**
+**This project was created by Christine Clemens.**     
+
+*GitHub Repository:* https://github.com/ChristineClemens/READMEGenerator
