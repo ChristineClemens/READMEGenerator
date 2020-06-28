@@ -96,20 +96,20 @@ async function generateREADME () {
         TableOfContents += `- [${TableOfContentsItems[i]}](#${TableOfContentsItems[i]}) \n`;
     }
 
-    var license = generateLicense(promptInfoResult); //NOIN NOIN!
+    var license = generateLicense(promptInfoResult);
 
     var writtenContent =
     `# ${promptInfoResult.title}`+ '\n' +
-    '### Description' + '\n' + promptInfoResult.description + '\n' + '\n' +
-    '### Table of Contents' + '\n' + `${TableOfContents}` + '\n' + 
-    '### Installation' + '\n' + '- ' + promptInfoResult.Installation.split(', ').join('\n'+'- ') + '\n' + '\n' +
-    '### Usage' + '\n' + '```'+ '\n' + promptInfoResult.Usage + '\n' + '```' + '\n' + '\n' +
-    '### License' + '\n' + `${license}` + '\n' + 
-    `### Contributers` + '\n' + promptInfoResult.Contributers + '\n' + '\n' +
-    `### Tests` + '\n' + promptInfoResult.Tests + '\n' + '\n' +
+    '### Description' + '\n' + promptInfoResult.description +
+    '### Table of Contents' + '\n' + `${TableOfContents}` +
+    '### Installation' + '\n' + '- ' + promptInfoResult.Installation.split(', ').join('\n'+'- ') +
+    '### Usage' + '\n' + promptInfoResult.Usage +
+    '### License' + '\n' + `${license}` +
+    `### Contributers` + '\n' + promptInfoResult.Contributers +
+    `### Tests` + '\n' + promptInfoResult.Tests +
     `### Questions` + '\n' + `| Please direct your inquiries here! |` + '\n' + `| :---: |` + '\n' +
     `| ![alt text](${profilePicture} "Github Profile Picture") |` + '\n' +
-    `| <a href=" ${promptInfoResult.Questions} "target="_blank">${promptInfoResult.fullname}</a> |` + '\n' +
+    `| <a href= "${promptInfoResult.Questions}" target="_blank">Contact Me</a> |` + '\n' +
     `**This project was created by ${promptInfoResult.fullname}.**`;
 
     completeFile(writtenContent, fileName);
