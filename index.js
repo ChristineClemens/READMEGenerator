@@ -28,7 +28,7 @@ const questions = [
         type: "checkbox",
         message: "What content would you like to include?",
         name: "content",
-        choices: ["Installation", "Usage", "License", "Contributers", "Tests", "Questions"]
+        choices: ["Installation", "Usage", "License", "Contributors", "Tests", "Questions"]
     },
     {
         type: "input",
@@ -52,8 +52,8 @@ const questions = [
     {
         type: "input",
         message: "Who are the additional contributing members?",
-        name: "Contributers",
-        when: data => data.content.includes("Contributers")
+        name: "Contributors",
+        when: data => data.content.includes("Contributors")
     },
     {
         type: "input",
@@ -99,13 +99,13 @@ async function generateREADME () {
     var license = generateLicense(promptInfoResult);
 
     var writtenContent =
-    `# ${promptInfoResult.title}`+ '\n' +
+    `# ${promptInfoResult.title}` +
     '### Description' + '\n' + promptInfoResult.description +
     '### Table of Contents' + '\n' + `${TableOfContents}` +
     '### Installation' + '\n' + '- ' + promptInfoResult.Installation.split(', ').join('\n'+'- ') +
     '### Usage' + '\n' + promptInfoResult.Usage +
     '### License' + '\n' + `${license}` +
-    `### Contributers` + '\n' + promptInfoResult.Contributers +
+    `### Contributors` + '\n' + promptInfoResult.Contributors +
     `### Tests` + '\n' + promptInfoResult.Tests +
     `### Questions` + '\n' + `| Please direct your inquiries here! |` + '\n' + `| :---: |` + '\n' +
     `| ![alt text](${profilePicture} "Github Profile Picture") |` + '\n' +
