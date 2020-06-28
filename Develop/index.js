@@ -3,6 +3,7 @@ const fs = require("fs");
 const axios = require("axios");
 const fileName = "README.md";
 
+//Question array that will prompt the user when used in the promptUser function.
 const questions = [
     {
         type: "input",
@@ -69,6 +70,7 @@ const questions = [
     }
 ];
 
+//Using the prompt input information, a README.md file will be written.
 function completeFile(data, fileName) {
     fs.writeFile(fileName, data, function(err) {
         if (err) {
@@ -78,18 +80,21 @@ function completeFile(data, fileName) {
     })
 };
 
+//User will be prompted to select and input information to be included in their README.md file.
 async function promptUser() {
     const retrievePromptInfo = await inquirer.prompt(questions);
     return retrievePromptInfo;
 }
 
+//The information collected from the prompt responses will be manipulated to format the README.md file.
 async function generateREADME () {
     let promptInfoResult = await promptUser();
     
+    //Fetch GitHub page to retrieve profile picture data.
     const fetchGitHubURL = await axios.get(`https://api.github.com/users/${promptInfoResult.username}`);
     var profilePicture = fetchGitHubURL.data.avatar_url;
-    console.log(profilePicture);
     
+    //Format selected options in the Table of Contents into a bullet list with links.
     let TableOfContentsItems = promptInfoResult.content;
     let TableOfContents = "";
     for (var i = 0; i < promptInfoResult.content.length; i++) {
@@ -98,6 +103,7 @@ async function generateREADME () {
 
     var license = generateLicense(promptInfoResult);
 
+    //README.md format using the information gathered by the prompts.
     var writtenContent =
     `# ${promptInfoResult.title}` + '\n' +
     '### Description' + '\n' + promptInfoResult.description + '\n' + '\n' +
@@ -117,6 +123,7 @@ async function generateREADME () {
 
 generateREADME();
 
+//Based on the license selected, a license format will be generated so that it may be used in the generateREADME function.
 function generateLicense(promptInfoResult) {
 
     var title = promptInfoResult.title;
